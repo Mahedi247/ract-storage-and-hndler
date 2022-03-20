@@ -1,11 +1,15 @@
 import React from 'react';
-import { addToDb } from '../utilities/localstaragemanage';
+import { addToDb, removeFromDb } from '../utilities/localstaragemanage';
 import './Cosmetic.css'
 const Cosmetic = (props) => {
     const { id, name, price } = props.cosmetic;
 
     const addToCart = (id) => {
-       addToDb(id)
+        addToDb(id)
+    }
+    const removeFromCart = id => {
+        removeFromDb(id)
+
     }
 
     return (
@@ -15,6 +19,7 @@ const Cosmetic = (props) => {
             <h3>Only for:${price}</h3>
             <p>It has id:{id}</p>
             <button onClick={() => addToCart(id)}>Add to cart</button>
+            <button onClick={() => removeFromCart(id)}>Remove</button>
         </div>
     );
 };
